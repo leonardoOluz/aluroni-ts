@@ -3,9 +3,10 @@ import styles from "./Ordenador.module.scss";
 import opcoes from "./ordenador.json";
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 import classNames from "classnames";
+export type OpcoesOrdenador = '' | 'porcao' | 'qtd_pessoas' | 'preco';
 interface IProps {
-  ordenador: string;
-  setOrdenador: React.Dispatch<React.SetStateAction<string>>;
+  ordenador: OpcoesOrdenador;
+  setOrdenador: React.Dispatch<React.SetStateAction<OpcoesOrdenador>>;
 }
 export default function Ordenador({ ordenador, setOrdenador }: IProps) {
   const [aberto, setAberto] = useState(false);
@@ -36,7 +37,7 @@ export default function Ordenador({ ordenador, setOrdenador }: IProps) {
           <div
             className={styles.ordenador__option}
             key={opcao.value}
-            onClick={() => setOrdenador(opcao.value)}
+            onClick={() => setOrdenador(opcao.value as OpcoesOrdenador)}
           >
             {opcao.nome}
           </div>
